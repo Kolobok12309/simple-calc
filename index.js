@@ -7,6 +7,7 @@ class CalcError extends Error {
 
 const consts = {
     actions: {
+        CLEAR: -1,
         EQUAL: 0,
         PLUS: 1,
         MINUS: 2,
@@ -99,6 +100,7 @@ class Calc {
     // Установка действия
     setAction(actionId) {
         if (actionId === consts.actions.EQUAL) return this.result();
+        if (actionId === consts.actions.CLEAR) return this.clear();
 
         const action = findAction(actionId);
         if (!action) throw new CalcError('Undefined action');
@@ -139,7 +141,7 @@ class Calc {
     }
 
     // Очистка значений
-    clear({ result = '', secondNum = '' , action = consts.actions.EQUAL }) {
+    clear({ result = '', secondNum = '' , action = consts.actions.EQUAL } = {}) {
         this.nowAction = consts.actions.EQUAL;
         this.firstNum = String(result);
         this.lastArgs.action = action;
@@ -231,6 +233,10 @@ for (let i = 0; i < 10; i++) {
 document.getElementById('calc__num__dot').addEventListener('click',  calc.getNumListener('.'));
 
 const actionsForListeners = [
+    {
+        id: consts.actions.CLEAR,
+        htmlId: 'clear'
+    },
     {
         id: consts.actions.EQUAL,
         htmlId: 'equal'
