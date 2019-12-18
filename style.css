@@ -4,3 +4,16 @@
     background-color: orange;
     color: black;
 }
+
+.calc__row {
+    display: flex;
+}
+
+.calc__button {
+    padding: 10px;
+    font-size: 20px;
+    color: #262626;
+    cursor: pointer;
+    background-color: #b33737;
+    border-bottom: 1px solid #262626;
+}
