@@ -1,0 +1,6 @@
+.calc__display {
+    min-height: 40px;
+    width: 150px;
+    background-color: orange;
+    color: black;
+}
